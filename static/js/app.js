@@ -1,3 +1,10 @@
+var myWindow;
+var dato;
+
+function cargaIni() {
+    document.getElementById('digitarNumero').focus();
+}
+
 function cerrar_pagina(ct) {
     var contartiempo = ct;
     document.getElementById('contador').innerHTML = contartiempo+' seg';
@@ -10,14 +17,14 @@ function cerrar_pagina(ct) {
 }
 
 function enviarNumero() {
-    var dato = document.getElementById('digitarNumero');
+    dato = document.getElementById('digitarNumero');
     try {
         if(dato.value.trim() == '') throw "El campo no puede estar vacio!";
         if(isNaN(dato.value)) throw 'El valor introducido no es un número!';
         dato.value = Number(dato.value);
         if (dato.value < 1) throw 'El valor introducido debe ser positivo!';
         abrirNuevaVentana(dato.value)
-        limpiarInput(dato, 10);
+        limpiarInput(8);
     } catch(err) {
         alert(err);
         dato.focus();
@@ -26,7 +33,7 @@ function enviarNumero() {
     }
   }
 
-function limpiarInput(dato, ct) {
+function limpiarInput(ct) {
     var contartiempo = ct;
     if(contartiempo == 0) {
         dato.value = '';
@@ -37,7 +44,6 @@ function limpiarInput(dato, ct) {
     }
 }
 
-var myWindow;
 function abrirNuevaVentana(numero) {
     var textHTML = `
         <!DOCTYPE html>
@@ -65,7 +71,7 @@ function abrirNuevaVentana(numero) {
         <body>
             <div class="container mt-3">
                 <div class="mb-3 text-center">
-                    <label for="mostrarNumero" class="form-label h3">Digite el Número que desea visualizar</label>
+                    <label for="mostrarNumero" class="form-label h3">Pedido listo para entregar</label>
                     <input type="text" class="form-control d-block mx-auto text-center" id="mostrarNumero" value="`+numero+`" readonly>
                     <h3 class="mt-3" id="contadorEsta"></h3>
                 </div>
@@ -78,8 +84,7 @@ function abrirNuevaVentana(numero) {
     cerrar_esta(10);
 }
 
-
-function cerrar_esta(ct, ventana) {
+function cerrar_esta(ct) {
     var contarTiempoEsta = ct;
     if(contarTiempoEsta == 0) {
         myWindow.close();

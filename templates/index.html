@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block body %}
-  <form action="/mostrar_numero" method="post" target="_blank">
-    <div class="mb-3 text-center">
-      <label for="digitarNumero" class="form-label h3">Digite el Número que desea visualizar</label>
-      <input type="text" class="form-control d-block mx-auto text-center" id="digitarNumero" name="digitarNumero" value="">
-      <button type="submit" class="btn btn-primary btn-lg d-block mx-auto my-3" onclick="return enviarNumero();">Enviar Número</button>
-    </div>
-  </form>
+  <body onload="cargaIni()">
+    <form action="/mostrar_numero" method="post" target="_blank">
+      <div class="mb-3 text-center">
+        <label for="digitarNumero" class="form-label h3">Digite el Número que desea visualizar</label>
+        <input type="text" class="form-control d-block mx-auto text-center" id="digitarNumero" name="digitarNumero" value="">
+        <button type="submit" class="btn btn-primary btn-lg d-block mx-auto my-3" onclick="return enviarNumero();">Enviar Número</button>
+      </div>
+    </form>
 {% endblock %}
